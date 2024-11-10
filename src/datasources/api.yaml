@@ -1,0 +1,24 @@
+type: axios
+base_url: https://sheets.googleapis.com/v4  # Base URL for Google Sheets API
+curlifiedLogs: true  # Enable logging of curl requests for debugging
+
+authn:
+  fn: my_bank_api.auth_workflow  # Token refresh function that sets headers for API calls
+  refreshOn:
+    statusCode: [401, 403]  # Refresh token on specific response codes
+
+retry:
+  when:
+    status: [500, 502, 503]  # Retry on server errors
+    message: Temporary server error - retrying
+  max_attempts: 3
+  type: exponential  # Exponential backoff strategy
+  min_interval: PT5S  # Minimum retry interval
+  max_interval: PT15S  # Maximum retry interval
+
+headers:  # Headers for Google Sheets API requests
+  Content-Type: application/json
+  Authorization: Bearer ya29.a0AeDClZAcWjnxgLQwDcfy_C5_1RCneiceie-V5hUyHcPabFInfCjyQbqY-ktQbMn7_WZX8WRyhUv8TIKiQiWcF-R-q5YHI-GeuHlh9S7ca2B8MkSA7F31ASHwHJ6YFADQap71uaEdth8FSgN5sN5MvqeE1ePHM2b7PyAmNeQVaCgYKAdkSARISFQHGX2MitIYwjpCe4GCi2O-95Fq5FQ0175  # Hardcoded or dynamically populated access token
+
+data:
+  spreadsheet_id: "1UaTdThEFKzAMb1SoolJMQzMlkVAd0d8Yv1Pc9few4bw"  # ID of the Google Sheets spreadsheet

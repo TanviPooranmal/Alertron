@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "@godspeedsystems/core": ["node_modules/@godspeedsystems/core"]
+    },
+    "typeRoots": ["node_modules/@types", "src/types"]
+  },
+  "include": [
+  "index.ts",
+  "datasources/**/*.ts",
+  "datasources/**/*.yaml",
+  "events/**/*.ts",
+  "eventsources/**/*.ts",
+  "functions/**/*.ts",
+  "types/session.d.ts",
+  "src/**/*.ts", 
+]
+}
